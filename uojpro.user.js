@@ -2,7 +2,7 @@
 // @name         Daimayuan Online Judge++ - CSS
 // @namespace    http://tampermonkey.net/
 // @version      0.2.1
-// @description  增强Daimayuan OJ的功能
+// @description  change the theme color to green
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
 // @icon         <$ICON$>
