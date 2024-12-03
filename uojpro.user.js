@@ -2,7 +2,7 @@
 // @name         Daimayuan Online Judge++ - All
 // @namespace    http://tampermonkey.net/
 // @version      0.2.1
-// @description  增强Daimayuan OJ的功能
+// @description  CSS + JS All in One.
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
 // @icon         <$ICON$>
