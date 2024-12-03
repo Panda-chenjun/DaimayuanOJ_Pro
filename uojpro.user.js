@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Daimayuan Online Judge++ - All
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.2
 // @description  CSS + JS All in One.
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
