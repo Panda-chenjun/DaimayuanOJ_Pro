@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Daimayuan Online Judge++ - All
 // @namespace    http://tampermonkey.net/
-// @version      0.2.2
+// @version      0.2.3
 // @description  CSS + JS All in One.
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
@@ -12,48 +12,7 @@
 // @downloadURL https://update.greasyfork.org/scripts/519326/Daimayuan%20Online%20Judge%2B%2B%20-%20All.user.js
 // @updateURL https://update.greasyfork.org/scripts/519326/Daimayuan%20Online%20Judge%2B%2B%20-%20All.meta.js
 // ==/UserScript==
-function query(url,node){
-	function reqListener(){
-		var tmp=new Document();
-		var tt=document.createElement('html');
-		tt.innerHTML=this.responseText;
-		tmp.appendChild(tt);
-		console.log(tmp);
-		var t=tmp.querySelectorAll(".col-sm-2");
-		if(t.length==0){
-			node.title='Contest solving : no results.';
-		}
-		for(let x of t){
-            console.log(x);
-			if(x.innerHTML=='Wrong Answer'){
-				node.innerHTML+='-WA';
-				break;
-			}
-			if(x.innerHTML=='Time Limit Exceeded'){
-				node.innerHTML+='-TLE';
-				break;
-			}
-			if(x.innerHTML=='Runtime Error'){
-				node.innerHTML+='-RE';
-				break;
-			}
-			if(x.innerHTML=='Memory Limit Exceeded'){
-				node.innerHTML+='-MLE';
-				break;
-			}
-		}
-	}
-	var oReq = new XMLHttpRequest();
-	oReq.addEventListener("load", reqListener);
-	oReq.open("GET", url);
-	oReq.send();
-}
-(function() {
-	// value defines
-	var username='panda888';
-	var a;
-	// end
-
+function styleup(){
 	// All styles define
 	var homeorback;
 	a=document.querySelector("head");
@@ -2073,7 +2032,53 @@ span.uoj-username{animation:colorful 1s linear infinite;}
 	a.appendChild(tmp);
 	homeorback;
 	// end
+}
+function query(url,node){
+	function reqListener(){
+		var tmp=new Document();
+		var tt=document.createElement('html');
+		tt.innerHTML=this.responseText;
+		tmp.appendChild(tt);
+		console.log(tmp);
+		var t=tmp.querySelectorAll(".col-sm-2");
+		if(t.length==0){
+			node.title='Contest solving : no results.';
+		}
+		for(let x of t){
+            console.log(x);
+			if(x.innerHTML=='Wrong Answer'){
+				node.innerHTML+='-WA';
+				break;
+			}
+			if(x.innerHTML=='Time Limit Exceeded'){
+				node.innerHTML+='-TLE';
+				break;
+			}
+			if(x.innerHTML=='Runtime Error'){
+				node.innerHTML+='-RE';
+				break;
+			}
+			if(x.innerHTML=='Memory Limit Exceeded'){
+				node.innerHTML+='-MLE';
+				break;
+			}
+		}
+	}
+	var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", reqListener);
+	oReq.open("GET", url);
+	oReq.send();
+}
+(function() {
+	// value defines
+	var username='panda888';
+	var a;
+	// end
 
+	// style update
+	if(localStorage.getItem('style?')==1){
+		styleup();
+	}
 	// Progress Bar Update
 	a=document.querySelectorAll('.progress-bar');
 	for (var i=0;i<a.length;i++) {
