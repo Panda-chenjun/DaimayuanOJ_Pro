@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Daimayuan Online Judge++ - All
 // @namespace    http://tampermonkey.net/
-// @version      0.2.3
+// @version      0.2.4
 // @description  CSS + JS All in One.
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
@@ -2132,5 +2132,28 @@ function query(url,node){
 	}
 	// end
 
-
+	// add css change btn
+	var cssbtn='<form class="form-inline my-2 my-lg-0" method="get"><div class="input-group"><input type="button" class="form-control" id="style?" value="Style?"></div></form>'
+	var ele=document.querySelector('#navbarSupportedContent');
+	var tt=document.createElement('template');
+	tt.innerHTML=cssbtn;
+	var ttt=tt.content.firstChild;
+	ele.appendChild(ttt);
+	ttt=ttt.firstChild.firstChild;
+	if(localStorage.getItem('style?')==null)
+		localStorage.setItem('style?',1);
+	if(localStorage.getItem('style?')==1)
+		ttt.value='Style : On';
+	else
+		ttt.value='Style : Off';
+	ttt.addEventListener("click",
+		function(){
+			if(localStorage.getItem('style?')==1)
+				localStorage.setItem('style?',0);
+			else
+				localStorage.setItem('style?',1);
+			location.reload();
+		}
+	);
+	// end
 })();
