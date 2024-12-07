@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Daimayuan Online Judge++ - All
 // @namespace    http://tampermonkey.net/
-// @version      0.2.4
+// @version      0.3.0
 // @description  CSS + JS All in One.
 // @author       Chen Jun
 // @match        *://oj.daimayuan.top/*
@@ -2085,7 +2085,7 @@ function query(url,node){
         let x=a[i];
         x.classList.add("progress-bar-striped");
         x.classList.add("progress-bar-animated");
-        x.style['background-color']='rgb(0,200,0)';
+        // x.style['background-color']='rgb(0,200,0)';
     }
 	// end
 
@@ -2138,7 +2138,7 @@ function query(url,node){
 	var tt=document.createElement('template');
 	tt.innerHTML=cssbtn;
 	var ttt=tt.content.firstChild;
-	ele.appendChild(ttt);
+	ele.insertBefore(ttt,document.querySelector('#form-search-problem'));
 	ttt=ttt.firstChild.firstChild;
 	if(localStorage.getItem('style?')==null)
 		localStorage.setItem('style?',1);
